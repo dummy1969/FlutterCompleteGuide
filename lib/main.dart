@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/answer.dart';
+import 'package:flutter_complete_guide/question.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,10 +38,15 @@ class _MyStateApp extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questions[_answerIndex]),
+            Question(questionText: questions[_answerIndex]),
+            /*
             ElevatedButton(
                 onPressed: () => _answerChosen(0),
                 child: const Text('Answer 1')),
+                */
+            Answer(selectHandler: (int) {
+              _answerChosen(1);
+            }),
             ElevatedButton(
                 onPressed: () => _answerChosen(1),
                 child: const Text('Answer 2')),
