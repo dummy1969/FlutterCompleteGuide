@@ -1,8 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final void Function(int index) selectHandler;
+  final void Function()? selectHandler;
 
   const Answer({
     Key? key,
@@ -14,9 +13,7 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-          onPressed: () {
-            selectHandler;
-          },
+          onPressed: selectHandler,
           style: TextButton.styleFrom(backgroundColor: Colors.blue),
           child: const Text('Answer 1')),
     );
