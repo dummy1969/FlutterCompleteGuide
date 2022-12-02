@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/answer.dart';
-import 'package:flutter_complete_guide/question.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import './question.dart';
+import './answer.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
+    // TODO: implement createState
     return _MyAppState();
   }
 }
@@ -19,7 +23,6 @@ class _MyAppState extends State<MyApp> {
   void _answerQuestion() {
     setState(() {
       _questionIndex = _questionIndex + 1;
-      if (_questionIndex >= 3) _questionIndex = 0;
     });
     print(_questionIndex);
   }
@@ -48,18 +51,12 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-                questionText:
-                    questions[_questionIndex]['questionText'] as String),
+              questions[_questionIndex]['questionText'],
+            ),
             ...(questions[_questionIndex]['answers'] as List<String>)
                 .map((answer) {
-              return Answer(
-                selectHandler: _answerQuestion,
-                answerText: answer,
-              );
-            }).toList(),
-            SizedBox(
-              height: 10,
-            )
+              return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
